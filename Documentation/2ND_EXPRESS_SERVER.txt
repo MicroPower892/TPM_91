@@ -71,6 +71,99 @@ startServer();
 ********************
 ********************
 
+Thats's all about express server...
+
+
+
+
+============================     >>>>>>>>>>>>>>>  <<<<<<<<<<<<<<<<<     ==============================
+============================     >>>>>>>>>>>>>>>  <<<<<<<<<<<<<<<<<     ==============================
+============================     >>>>>>>>>>>>>>>  <<<<<<<<<<<<<<<<<     ==============================
+
+
+
+
+Create the folder "config" just inside the "src" folder...
+
+And create the "config.ts" file just inside the "config" folder...
+
+Create the file ".env" in root...
+
+Create the file ".env.example" in root...
+
+install the packages bellow...
+
+In Terminal
+
+Command == npm i dotenv
+
+Command == npm i -D @types/dotenv
+
+
+********************
+*                  *                                                                                 
+*   CODE           *                                                                                 
+*                  *                                                                                 
+******************** in .env and .env.example
+
+PORT=4000
+
+
+********************
+********************
+
+
+
+********************
+*                  *                                                                                 
+*   CODE           *                                                                                 
+*                  *                                                                                 
+******************** in config.ts
+
+import {config as conf} from "dotenv";
+
+conf();
+
+const _config = {
+    prot: process.env.PORT,
+    
+};
+
+
+export const config = Object.freeze(_config);
+
+********************
+********************
+
+
+
+********************
+*                  *                                                                                 
+*   CODE           *                                                                                 
+*                  *                                                                                 
+******************** in server.ts
+
+import app from './src/app';
+import { config } from './src/config/config';
+
+const startServer = async () => {
+
+
+    const port = config.prot || 4000;
+
+    app.listen(port, () => {
+        console.log(`Listener on port: ${port}`);
+    });
+};
+
+startServer();
+
+********************
+********************
+
+
+
+
 
 
 
