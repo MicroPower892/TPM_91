@@ -1,0 +1,75 @@
+starting with Initializing the node project here with the command of "npm init" in Terminal.
+
+take a caution about, you have to opne Terminal with project location path there.
+
+******************************************************************************************************
+*                  *                                                                                 *
+*   IN TERMINAL    *                                                                                 *
+*                  *                                                                                 *
+******************************************************************************************************
+
+
+command = npm init
+
+
+package name: (tpm_91)
+version: (1.0.0)
+description: This is for only testing purpose here!
+entry point: (index.js)
+test command:
+git repository:
+keywords:
+author: Sparsh Melody <sparshmeoly378@gmail.com>
+license: (ISC)
+
+******************************************************************************************************
+
+Then,
+
+then look at the VS code, you will get package.json file and explore it...
+
+IN package.json >> we have to update..
+
+FROM
+
+"scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+
+TO
+
+"scripts": {
+    "dev": "nodemon server.ts"
+  },
+
+
+in that, dev will be the kind of class and nodemon will be Initializing first server.ts here...
+
+
+
+============================     >>>>>>>>>>>>>>>  <<<<<<<<<<<<<<<<<     ==============================
+
+
+Now, have to install the node_module in your code..
+
+******************************************************************************************************
+*                  *                                                                                 *
+*   IN TERMINAL    *                                                                                 *
+*                  *                                                                                 *
+******************************************************************************************************
+
+
+command = npm install -D typescript nodemon ts-node @types/node
+
+
+******************************************************************************************************
+
+so, then perhapse you get node_module Now
+
+
+
+============================     >>>>>>>>>>>>>>>  <<<<<<<<<<<<<<<<<     ==============================
+
+
+
+
