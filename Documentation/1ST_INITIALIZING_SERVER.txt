@@ -28,6 +28,8 @@ license: (ISC)
 
 Then,
 
+Crete the server.ts file
+
 then look at the VS code, you will get package.json file and explore it...
 
 IN package.json >> we have to update..
@@ -138,12 +140,17 @@ Here it's go!
 ********************
 ********************
 
+Notes == install the eslint extensions from VS code
+
 
 
 
 ============================     >>>>>>>>>>>>>>>  <<<<<<<<<<<<<<<<<     ==============================
 ============================     >>>>>>>>>>>>>>>  <<<<<<<<<<<<<<<<<     ==============================
 ============================     >>>>>>>>>>>>>>>  <<<<<<<<<<<<<<<<<     ==============================
+
+
+
 
 
 
