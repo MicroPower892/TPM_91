@@ -4,7 +4,7 @@
   "description": "This is for only testing purpose here!",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "dev": "nodemon server.ts"
   },
   "author": "Sparsh Melody <sparshmeoly378@gmail.com>",
   "license": "ISC",
