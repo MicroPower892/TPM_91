@@ -95,6 +95,57 @@ command = npx tsc --init
 ********************
 ********************
 
+Then, we will get tsconfig.json file which contain with amount of cofigiration of project...
+
+
+
+============================     >>>>>>>>>>>>>>>  <<<<<<<<<<<<<<<<<     ==============================
+============================     >>>>>>>>>>>>>>>  <<<<<<<<<<<<<<<<<     ==============================
+============================     >>>>>>>>>>>>>>>  <<<<<<<<<<<<<<<<<     ==============================
+
+
+
+ESLint for purpose with >> It will be fixed the problems of JS...
+
+********************
+*                  *                                                                                 
+*   IN TERMINAL    *                                                                                 
+*                  *                                                                                 
+********************
+
+
+
+
+
+How would you like to use ESLint? >> To check syntax and find problems.
+
+What type of modules does your project use? >> JavaScript modules.
+
+Which framework does your project use? >> None of these
+
+Does your project use TypeScript? >> Yes
+
+Where does your code run? >> node
+
+Would you like to install them now? >> Yes
+
+Which package manager do you want to use? >> npm
+
+
+Here it's go!
+
+
+********************
+********************
+
+
+
+
+============================     >>>>>>>>>>>>>>>  <<<<<<<<<<<<<<<<<     ==============================
+============================     >>>>>>>>>>>>>>>  <<<<<<<<<<<<<<<<<     ==============================
+============================     >>>>>>>>>>>>>>>  <<<<<<<<<<<<<<<<<     ==============================
+
+
 
 
 
