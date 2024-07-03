@@ -1,0 +1,174 @@
+Now we are connect the MongoDB with the project....
+
+Imporatant is only comming with MongoDB, must be installed in your system...
+
+If not then Install it, Otherwice go with Docker and Install the image of Mongoose there...
+
+Now,
+
+Create the file Inside the src/config/db.ts  name with db.ts
+
+Firstly import the mongooes by packages...
+
+
+
+********************
+*                  *                                                                                 
+*   IN TERMINAL    *                                                                                 
+*                  *                                                                                 
+********************
+
+command == npm install mongoose
+
+command == npm i -D @types/mongoose
+
+********************
+********************
+
+
+
+Now,
+
+We have to create the database in MongoDB, So create DB and Depploy that DB
+
+We must have to remember the Username and Password of Our DB...
+
+
+
+Now, we have to edit the ".env" file with database URL
+
+
+
+
+********************
+*                  *                                                                                 
+*   CODE           *                                                                                 
+*                  *                                                                                 
+********************  In .env
+
+
+PORT=4000
+
+MONGO_CONNECTION_STRING=mongodb+srv://nanomax8081:<password>@apinext.8w6si1z.mongodb.net/?retryWrites=true&w=majority&appName=APINEXT
+
+********************
+********************
+
+Here, we have to change the Password "<password>", which you desired...
+
+
+
+
+
+adding the databaseURL here...
+
+
+
+********************
+*                  *                                                                                 
+*   CODE           *                                                                                 
+*                  *                                                                                 
+********************  In config.ts
+
+import {config as conf} from "dotenv";
+
+conf();
+
+const _config = {
+    prot: process.env.PORT,
+    databseURL: process.env.MONGO_CONNECTION_STRING,
+    
+};
+
+
+export const config = Object.freeze(_config);
+
+********************
+********************
+
+
+
+
+Now, create the DB inside the db.ts
+
+
+
+********************
+*                  *                                                                                 
+*   CODE           *                                                                                 
+*                  *                                                                                 
+********************  In config.ts
+
+import mongoose from "mongoose";
+import { config } from "./config";
+
+
+const connectDB = async () => {
+
+    try {
+
+        mongoose.connection.on('connected', () => {
+            console.log("Connected sucessfully with database...");
+        });
+
+        mongoose.connection.on('error', (err) => {
+            console.log("Error to connecting with database....", err);
+        });
+
+        await mongoose.connect(config.databseURL as string);
+
+
+        
+
+    } catch(err) {
+
+        console.error("Failed to connect to the database....", err);
+
+        process.exit(1);
+
+    }
+    
+};
+
+export default connectDB;
+
+********************
+********************
+
+
+
+
+
+Now, we are going to change the server.ts file for connecting with DB...
+
+
+
+********************
+*                  *                                                                                 
+*   CODE           *                                                                                 
+*                  *                                                                                 
+********************  In config.ts
+
+
+import app from './src/app';
+import { config } from './src/config/config';
+import connectDB from './src/config/db';
+
+const startServer = async () => {
+
+    await connectDB();
+
+    const port = config.prot || 4000;
+
+    app.listen(port, () => {
+        console.log(`Listener on port: ${port}`);
+    });
+};
+
+startServer();
+
+********************
+********************
+
+
+
