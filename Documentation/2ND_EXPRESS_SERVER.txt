@@ -1,0 +1,17 @@
+Express which is kind of framework..
+
+********************
+*                  *                                                                                 
+*   IN TERMINAL    *                                                                                 
+*                  *                                                                                 
+********************
+
+
+command = npm install express
+
+command = npm i -D @types/express
+
+
+********************
+********************
+
