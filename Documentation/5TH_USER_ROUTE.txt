@@ -1,0 +1,49 @@
+We just compeleted with server and that is working nice there...
+
+Now, finally we are going to Buid the API here...
+
+Hi there, coming with create new Folder here... Let's go...
+
+Create the Folder name with "user" in just inside of "src" Folder there...
+
+Then, create file "userRouter.ts" inside of "user" Folder...
+
+Then, create file "userController.ts" inside of "user" Folder...
+
+
+
+********************
+*                  *                                                                                 
+*   CODE           *                                                                                 
+*                  *                                                                                 
+********************  In app.ts
+
+import express from "express";
+import globalErrorHandlers from "./middlewares/globalErrorHandlers";
+import userRouter from "./user/userRouter";
+
+
+const app = express();
+
+// Routes
+//Http method : GET, POST, PUT, PATCH, DELETE
+// eslint-disable-next-line @typescript-eslint/no-unused-vars
+app.get('/', (req, res, next) => {
+    
+    res.json({message: "Hi there, what's going on there..."});
+    
+});
+
+app.use("/api/users" ,userRouter);
+
+// Global error handler
+// Middleware
+
+app.use(globalErrorHandlers);
+
+export default app;
+
+********************
+********************
+
+
