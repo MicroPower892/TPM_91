@@ -21,3 +21,75 @@ command == npm i -D @types/http-errors
 
 
 
+Now, we have to congiration of Error Handling there, so may some change will be apllied in config.ts file...
+
+
+
+********************
+*                  *                                                                                 
+*   CODE           *                                                                                 
+*                  *                                                                                 
+********************  In config.ts
+
+
+import {config as conf} from "dotenv";
+
+conf();
+
+const _config = {
+    prot: process.env.PORT,
+    databseURL: process.env.MONGO_CONNECTION_STRING,
+    env: process.env.NODE_ENV,
+    
+};
+
+
+export const config = Object.freeze(_config);
+
+********************
+********************
+
+
+
+Now, create the Folder with name of "middlewares" in just inside of "src" Folder there...
+
+Now, create the file name with "globalErrorHandlers.ts" in just inside of "middlewares" Folder there...
+
+
+
+********************
+*                  *                                                                                 
+*   CODE           *                                                                                 
+*                  *                                                                                 
+********************  In .env
+
+
+// Global error handler
+
+import {  Request, Response ,NextFunction } from "express";
+import { HttpError } from "http-errors";
+import { config } from "../config/config";
+
+// Miidleware
+const globalErrorHandlers = (err: HttpError, req: Request, res: Response, next: NextFunction) => {
+
+    const statusCode = err.statusCode || 500;
+
+    return res.status(statusCode).json({
+        message: err.message,
+        errorStack: config.env === 'development' ? err.stack: "",
+    })
+};
+
+export default globalErrorHandlers;
+
+********************
+********************
+
+
+
+
+
+
+
+
