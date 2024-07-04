@@ -61,7 +61,7 @@ Now, create the file name with "globalErrorHandlers.ts" in just inside of "middl
 *                  *                                                                                 
 *   CODE           *                                                                                 
 *                  *                                                                                 
-********************  In .env
+********************  In globalErrorHandlers.ts
 
 
 // Global error handler
@@ -88,8 +88,41 @@ export default globalErrorHandlers;
 
 
 
+And also have to call globalErrorHandlers in app.ts so...
 
 
+
+
+********************
+*                  *                                                                                 
+*   CODE           *                                                                                 
+*                  *                                                                                 
+********************  In app.ts
+
+import express from "express";
+import globalErrorHandlers from "./middlewares/globalErrorHandlers";
+
+
+const app = express();
+
+// Routes
+//Http method : GET, POST, PUT, PATCH, DELETE
+// eslint-disable-next-line @typescript-eslint/no-unused-vars
+app.get('/', (req, res, next) => {
+    
+    res.json({message: "Hi there, what's going on there..."});
+    
+});
+
+// Global error handler
+// Middleware
+
+app.use(globalErrorHandlers);
+
+export default app;
+
+********************
+********************
 
 
 

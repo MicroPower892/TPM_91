@@ -1,4 +1,5 @@
 import express from "express";
+import globalErrorHandlers from "./middlewares/globalErrorHandlers";
 
 
 const app = express();
@@ -11,5 +12,10 @@ app.get('/', (req, res, next) => {
     res.json({message: "Hi there, what's going on there..."});
     
 });
+
+// Global error handler
+// Middleware
+
+app.use(globalErrorHandlers);
 
 export default app;
