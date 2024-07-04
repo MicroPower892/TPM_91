@@ -97,7 +97,7 @@ Now, create the DB inside the db.ts
 *                  *                                                                                 
 *   CODE           *                                                                                 
 *                  *                                                                                 
-********************  In config.ts
+********************  In db.ts
 
 import mongoose from "mongoose";
 import { config } from "./config";
