@@ -1,0 +1,65 @@
+Here are we created user successfully? Yes, that's ahead...
+
+We now required to login the user in our PRO...
+
+So, asusal we need to create the Router for Login credential there...
+
+So, some changes will be affected...
+
+
+
+********************
+*                  *                                                                                 
+*   CODE           *                                                                                 
+*                  *                                                                                 
+********************  In userRouter.ts
+
+import express from "express";
+import { createUser, loginUser } from "./userController";
+
+
+
+const userRouter = express.Router();
+
+
+//Routes
+
+userRouter.post("/register", createUser);
+userRouter.post("/login", loginUser);
+
+export default userRouter;
+
+********************
+********************
+
+
+
+
+Now, have to apply the some changed in "userController.ts" File...
+
+
+
+
+********************
+*                  *                                                                                 
+*   CODE           *                                                                                 
+*                  *                                                                                 
+********************  In userRouter.ts
+
+import express from "express";
+import { createUser, loginUser } from "./userController";
+
+
+
+const userRouter = express.Router();
+
+
+//Routes
+
+userRouter.post("/register", createUser);
+userRouter.post("/login", loginUser);
+
+export default userRouter;
+
+********************
+********************
