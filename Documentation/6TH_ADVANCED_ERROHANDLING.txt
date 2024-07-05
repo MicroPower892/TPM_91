@@ -1,3 +1,16 @@
+NOW, we perhaps need to impliment the advanced Erro on our Project...
+
+Chnages in "userController.ts"...
+
+
+
+
+********************
+*                  *                                                                                 
+*   CODE           *                                                                                 
+*                  *                                                                                 
+********************  In userController.ts
+
 import { NextFunction, Request, Response } from "express";
 import createHttpError from "http-errors";
 import userModel from "./userModel";
@@ -72,3 +85,9 @@ const createUser = async (req:Request, res:Response, next:NextFunction) => {
 
 
 export { createUser };
+
+********************
+********************
+
+
+
