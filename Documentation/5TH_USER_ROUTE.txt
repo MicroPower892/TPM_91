@@ -269,6 +269,20 @@ export interface User {
 
 
 
+Notes here is going ahead... For Terminal...
+
+Command = npm install bcrypt
+
+Command = npm i -D @types/bcrypt
+
+Command = npm install jsonwebtoken
+
+Command = npm i -D @types/jsonwebtoken
+
+
+
+
+
 Now, Database is ready to push data on the server...
 
 
