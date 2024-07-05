@@ -10,6 +10,7 @@ Then, create file "userRouter.ts" inside of "user" Folder...
 
 Then, create file "userController.ts" inside of "user" Folder...
 
+Furthere code, we will be created the Router there in app.js starting with "/api/users/register".
 
 
 ********************
@@ -45,5 +46,222 @@ export default app;
 
 ********************
 ********************
+
+
+
+
+Now, we have to create with the New Folder inside the "src" Folder name with "user"...
+
+Next is that create total 4 new files in just inside the "user" Folder name with "userController.ts", "userModel.ts",
+"userRouter.ts", "userTypes.ts"...
+
+
+In the file of "const.ts", we need add new configiration there...
+
+
+
+
+********************
+*                  *                                                                                 
+*   CODE           *                                                                                 
+*                  *                                                                                 
+********************  In app.ts
+
+import {config as conf} from "dotenv";
+
+conf ();
+
+const _config = {
+    prot: process.env.PORT,
+    databseURL: process.env.MONGO_CONNECTION_STRING,
+    env: process.env.NODE_ENV,
+    jwtSecret: process.env.JWT_SECRET,
+};
+
+
+
+export const config = Object.freeze(_config);
+
+********************
+********************
+
+
+
+
+
+And then ".env" also be changed...
+take a note with replace the "MONGO_CONNECTION_STRING" URL for you Mongo server...
+
+
+
+
+
+********************
+*                  *                                                                                 
+*   CODE           *                                                                                 
+*                  *                                                                                 
+********************  In .env
+
+PORT=4000
+
+MONGO_CONNECTION_STRING=mongodb+srv://<USERNAME>:<PASSWORD>@apinext.8w6si1z.mongodb.net/?retryWrites=true&w=majority&appName=<PROJECTNAME>
+
+NODE_ENV=development
+
+JWT_SECRET=cbhuebcjhlkdnnckjdnckdj
+
+********************
+********************
+
+
+
+
+
+********************
+*                  *                                                                                 
+*   CODE           *                                                                                 
+*                  *                                                                                 
+********************  In userController.ts
+
+import { NextFunction, Request, Response } from "express";
+import createHttpError from "http-errors";
+import userModel from "./userModel";
+import bcrypt from 'bcrypt';
+import { sign } from "jsonwebtoken";
+import { config } from "../config/config";
+
+const createUser = async (req:Request, res:Response, next:NextFunction) => {
+    const {name, email, password} = req.body;
+    //Validation
+    if (!name || !email || !password) {
+        const error = createHttpError(400, "All Filed is requred!!");
+        return next(error);
+    }   
+
+
+    //Database call
+
+    const user = await userModel.findOne({email});
+
+    if (user) {
+        const error = createHttpError(400, "User already exists with this email...");
+        next(error);
+    }
+
+    //password >> hash
+    const hashedPassword = await bcrypt.hash(password, 10);
+
+    const newUser = await userModel.create({
+        name,
+        email,
+        password: hashedPassword,
+    });
+
+    // Token generation JWT
+    const token = sign({sub: newUser._id}, config.jwtSecret as string, {expiresIn: '7d'} );
+
+    //Process
+    //Response
+    res.json({ accessToken: token });
+};
+
+
+export { createUser };
+
+********************
+********************
+
+
+
+
+
+********************
+*                  *                                                                                 
+*   CODE           *                                                                                 
+*                  *                                                                                 
+********************  In userModel.ts
+
+import mongoose, { Schema } from "mongoose";
+import { User } from "./userTypes";
+
+
+
+const userSchema = new mongoose.Schema<User>({
+    name: {
+        type : String,
+        required: true,
+    },
+    email: {
+        type : String,
+        unique: true,
+        required: true,
+    },
+    password: {
+        type : String,
+        required: true
+    },
+
+}, {
+    timestamps: true
+}
+
+);
+
+
+//user
+
+export default mongoose.model<User>('User', userSchema);
+
+********************
+********************
+
+
+
+
+
+********************
+*                  *                                                                                 
+*   CODE           *                                                                                 
+*                  *                                                                                 
+********************  In userRouter.ts
+
+import express from "express";
+import { createUser } from "./userController";
+
+
+
+const userRouter = express.Router();
+
+
+//Routes
+
+userRouter.post("/register", createUser);
+
+export default userRouter;
+
+********************
+********************
+
+
+
+
+
+
+********************
+*                  *                                                                                 
+*   CODE           *                                                                                 
+*                  *                                                                                 
+********************  In userTypes.ts
+
+export interface User {
+    _id: string,
+    name: string,
+    email: string,
+    password: string,
+}
+
+********************
+********************
+
 
 
