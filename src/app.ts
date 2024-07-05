@@ -5,6 +5,8 @@ import userRouter from "./user/userRouter";
 
 const app = express();
 
+app.use(express.json());
+
 // Routes
 //Http method : GET, POST, PUT, PATCH, DELETE
 // eslint-disable-next-line @typescript-eslint/no-unused-vars
