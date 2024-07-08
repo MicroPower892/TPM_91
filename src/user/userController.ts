@@ -5,7 +5,6 @@ import bcrypt from 'bcrypt';
 import { sign } from "jsonwebtoken";
 import { config } from "../config/config";
 import { User } from "./userTypes";
-import { create } from "domain";
 
 
 
