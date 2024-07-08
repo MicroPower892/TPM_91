@@ -1,3 +1,18 @@
+
+
+
+
+
+
+
+
+
+********************
+*                  *                                                                                 
+*   CODE           *                                                                                 
+*                  *                                                                                 
+********************  In bookController.ts
+
 import { NextFunction, Request, Response } from "express";
 import cloudinary from "../config/cloudinary";
 import path from "node:path";
@@ -266,6 +281,16 @@ const deleteBook = async (req: Request, res: Response, next: NextFunction) => {
 
 
 export { createBook, updateBook, listBooks, getSingleBook, deleteBook };
+
+
+
+
+
+********************
+********************
+
+
+
 
 
 
