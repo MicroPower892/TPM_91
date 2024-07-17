@@ -21,7 +21,7 @@ command == npm i -D @types/http-errors
 
 
 
-Now, we have to congiration of Error Handling there, so may some change will be apllied in config.ts file...
+Now, we have to configiration of Error Handling there, so may some change will be apllied in config.ts file...
 
 
 
